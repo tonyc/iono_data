@@ -1,9 +1,11 @@
 defmodule IonoData.CLI do
   @default_count 4
 
-  def run(argv) do
-    parse_args(argv)
-    IO.puts "Hi"
+  def run() do
+    # parse_args(argv)
+    filename = (System.argv |> List.first) || "sample_data/Dourbes_iono.txt"
+    IO.puts "Using #{filename}"
+    IonoData.Parser.parse(filename)
   end
 
   @doc """
