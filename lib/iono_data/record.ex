@@ -6,15 +6,12 @@ defmodule IonoData.Record do
   def from_line(line) do
     [year, month, day, time, f_of_f2, _, muf_d | _] = String.strip(line) |> String.split(~r/\ +/)
 
-    IO.puts "f_of_f2: #{f_of_f2}"
-    IO.puts "muf_d: #{muf_d}"
-
     {hours, mins} = String.split_at(time, 2)
 
     parsed_f_of_f2 = String.to_float(f_of_f2)
     parsed_muf_d = String.to_float(muf_d)
-    
-    muf_3k = parsed_muf_d * parsed_muf_d
+
+    muf_3k = parsed_f_of_f2 * parsed_muf_d
 
     {IonoRecord, 
       %{date: %{year: year, month: month, day: day},
