@@ -3,7 +3,7 @@ defmodule IonoData.CLI do
 
   def run() do
     # parse_args(argv)
-    filename = (System.argv |> List.first) || "sample_data/Dourbes_iono.txt"
+    filename = (System.argv |> List.first) || "sample_data/dourbes_iono.txt"
     IO.puts "Using #{filename}"
     IonoData.Parser.parse(filename)
   end
