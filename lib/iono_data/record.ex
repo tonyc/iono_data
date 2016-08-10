@@ -4,7 +4,8 @@ defmodule IonoData.Record do
   #-------------------------------------------------------------------------------------------
   # 2016 06 20  0000     4.5 250  2.98   -1 250  89  4.0 348  5.2 -1.0 -1.0  -1  2.2  1.7   5.1
   def from_line(line) do
-    [year, month, day, time, f_of_f2, _, muf_d | _] = String.strip(line) |> String.split(~r/\ +/)
+    [year, month, day, time, f_of_f2, _, muf_d | _] = String.strip(line)
+      |> String.split(~r/\ +/)
 
     {hours, mins} = String.split_at(time, 2)
 
