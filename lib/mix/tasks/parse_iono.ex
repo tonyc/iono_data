@@ -4,8 +4,14 @@ defmodule Mix.Tasks.ParseIono do
   @shortdoc "Parses Iono Data"
   
   def run(args \\ []) do
-    filename = List.first(args) || "sample_data/dourbes_iono.txt"
+    url = List.first(args) || "http://legacy-www.swpc.noaa.gov/ftpdir/lists/iono_day/Boulder_iono.txt"
 
-    IonoData.Parser.parse(filename)
+    IO.puts "******************"
+    IO.puts "Fetching #{url}"
+
+    case HTTPoison.get(url) do
+      {:ok, response} -> IonoData.Parser.parse(response.body)
+    end
+
   end
 end

@@ -7,6 +7,7 @@ defmodule IonoData.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     escript: escript,
      deps: deps]
   end
 
@@ -15,9 +16,13 @@ defmodule IonoData.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [
-      applications: [:logger, :postgrex],
-      mod: { Iono, [] }
+      applications: [:logger, :postgrex, :httpoison],
+      mod: { IonoData, [] }
     ]
+  end
+
+  def escript do
+    [main_module: IonoData.ParserApp]
   end
 
   # Dependencies can be Hex packages:

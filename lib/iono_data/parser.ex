@@ -1,21 +1,20 @@
 defmodule IonoData.Parser do
-  def parse(filename) do
-    IO.puts "Reading file: #{filename}"
 
-    File.stream!(filename)
-    |> Stream.filter_map(&read_line?/1, &IonoData.Record.from_line/1)
-    |> Enum.each(&IO.inspect/1)
+  def parse(file_contents) do
+    file_contents
+    |> String.split("\n")
+    |> Stream.filter_map(&accept_line?/1, &IonoData.Record.from_line/1)
   end
 
-  defp read_line?(line) do
-    non_comments(line) && no_data?(line)
+  defp accept_line?(line) do
+    line !== "" && non_comments(line) && data_line?(line)
   end
 
   defp non_comments(line) do
     !String.match?(line, ~r/[:#]/)
   end
 
-  defp no_data?(line) do
+  defp data_line?(line) do
     !String.match?(line, ~r/^No data available/)
   end
 end
