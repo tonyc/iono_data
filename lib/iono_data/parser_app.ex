@@ -12,7 +12,6 @@ defmodule IonoData.ParserApp do
   def main(args) do
     url = List.first(args) || "http://legacy-www.swpc.noaa.gov/ftpdir/lists/iono_day/Boulder_iono.txt"
 
-    IO.puts "******************"
     IO.puts "Fetching #{url}"
 
     case HTTPoison.get(url) do
