@@ -18,6 +18,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
           [applications: [:iono_data]]
         end
 
-## Mix tasks
-  * parse data:
-      mix parse_iono
+## Parse the data:
+
+    mix escript.build
+    ./iono_data [url]
