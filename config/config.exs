@@ -2,14 +2,14 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-config :iono_data, Iono.Repo,
+config :iono_data, IonoData.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "iono_data_repo",
   username: "tony",
   password: "",
   hostname: "localhost"
 
-config :iono_data, ecto_repos: [Iono.Repo]
+config :iono_data, ecto_repos: [IonoData.Repo]
 
 
 # This configuration is loaded before any dependency and is restricted
