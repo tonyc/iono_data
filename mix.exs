@@ -14,7 +14,10 @@ defmodule IonoData.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [
+      applications: [:logger, :postgrex],
+      mod: { Iono, [] }
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -27,6 +30,9 @@ defmodule IonoData.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:ecto, "~> 2.0"},
+      {:postgrex, "0.11.2"}
+    ]
   end
 end
